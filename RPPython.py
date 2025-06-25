@@ -135,8 +135,8 @@ y = 0
 Map = [["Acampamento", "Floresta", "Floresta Negra", "Rio Verde", "Acampamentos dos bandidos"],      # y = 0
        ["Planície","Floresta", "Planícies Verdejantes", "Cidade Alta", "Posto de Mineração"],        # y = 1
        ["Floresta Funge", "Rio Funge", "Lago", "Cidade Baixa","Floresta"],                            # y = 2
-       ["Montanhas", "Vilarejo das montanhas", "Depressão", "Floresta", "Caverna"],                   # y = 3
-       ["Montanha do Dragão","Vale", "Montanhas", "Ponte", "Posto Comercial"],]                      # y = 4
+       ["Montanhas", "Vilarejo das montanhas", "Depressão", "Caverna", "Floresta"],                   # y = 3
+       ["Montanha do Dragão","Posto Comercial", "Montanhas", "Ponte", "Vale da Perdição"],]                      # y = 4
 
 y_len = len(Map) - 1
 x_len = len(Map[0]) - 1
@@ -313,7 +313,7 @@ biom_description = {
         "description_2" : ["....."],
         "description_3" : ["....."]
     },
-    "Vale" : {
+    "Vale da Perdição" : {
         "contador" : 1,
         "description_1" : ["....."],
         "description_2" : ["....."],
@@ -406,8 +406,8 @@ biom = {
         "text" : "MONTANHA DO DRAGÃO",
         "enemies" : False},
 
-    "Vale": {
-        "text" : "VALE",
+    "Vale da Perdição": {
+        "text" : "VALE DA PERDIÇÃO",
         "enemies" : True},
     
     "Ponte": {
