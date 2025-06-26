@@ -188,9 +188,13 @@ mobs = {
     },
 }
 
+#Alternação das levas de dialogos
+dialogo_1 = True
+
+
 biom_description = {
     "Acampamento" : {
-        "contador" : 1,
+        "contador" : 0,
         "description_1" : [#"No meio da grama amassada e das cinzas quentes da fogueira, o seu acampamento parece um refúgio simples.",
                            #"De vez em quando dá pra ouvir o barulho de uma armadura ou das folhas balançando. O cheiro de couro ",
                            #"e chá de ervas enche o ar. É um lugar pequeno, mas seguro."
@@ -614,23 +618,31 @@ def exibidor_texto_rpg(texto_lista, delay):
 
         print()
 
-def escolha_exibidor_texto():
-    if biom_description[Map[y][x]]["contador"] == 1:
+def escolha_exibidor_descricao():
+
+    if biom_description[Map[y][x]]["contador"] == 0:
+        biom_description[Map[y][x]]["contador"] += 1
+        
+
+    elif biom_description[Map[y][x]]["contador"] == 1:
         biom_description[Map[y][x]]["contador"] += 1
         print("======================================================================================================")
         exibidor_texto_rpg(biom_description[Map[y][x]]["description_1"], 0.01)
         print("======================================================================================================")
+        input("\n#>")
     
     elif biom_description[Map[y][x]]["contador"] == 2:
         biom_description[Map[y][x]]["contador"] += 1
         print("======================================================================================================")
         exibidor_texto_rpg(biom_description[Map[y][x]]["description_2"], 0.01)
         print("======================================================================================================")
+        input("\n#>")
 
     else:
         print("============================================")
         exibidor_texto_rpg(biom_description[Map[y][x]]["description_3"], 0.01)
         print("============================================")
+        input("\n#>")
 
 def fugir():
     global Dexterity
@@ -638,8 +650,23 @@ def fugir():
     chance_fuga = 4 * Dexterity
 
     return random.randint(0, chance_fuga)
-        
 
+def marcacao_dialogo():
+    print("======================================================================================================")
+
+def descansar_acampamento(cura):
+    global Health
+    if Health + cura < HpMAX:
+        Health += cura
+    else:
+        Health = HpMAX
+    clear()
+    marcacao_dialogo()
+    print(" O aventureiro(a) adormece na barraca do acampamento. Ao acordar você se sente mais forte")
+    marcacao_dialogo()
+    input("#>")
+
+#Menus interativos
 run = True
 menu = True
 play = False
@@ -649,6 +676,10 @@ menu_game = True  #Define se não vai aparecer batalhas quando voltar de algum m
 status_points = False
 inv = False
 description = True
+inside_region = False
+
+#Menu dentro das regiões
+Acampamento = False
 
 while run:
     while menu:
@@ -760,7 +791,8 @@ while run:
                         print("Digite apenas numeros, tente novamente.")
                         continue
                 menu = False
-                play = True
+                Acampamento = True
+                inside_region = True
             elif escolha_menu == 2:
                 print("Saindo...")
                 time.sleep(1)
@@ -769,12 +801,72 @@ while run:
                 print("Escolha apenas 1 ou 2, tente novamente")
                 time.sleep(1.5)
                 continue 
+
+
+        #Dialogos do jogo, está aqui pois o mome só é salvo aqui em cima
+        dialogo_acampamento_lista = {
+        "dialogo_1" : ["Você está em seu acampamento, sentado perto da fogueira. A carne já está quase pronta, e o cheiro bom",
+                       "preenche o ar. O dia de viagem foi longo, e finalmente tem um pouco de paz."],
+
+        "dialogo_2" : ["De repente, um barulho estranho corta o som da noite. Passos rápidos... cascos?"],
+
+        "dialogo_3" : [f"{Name}: Isso não é lobo. Alguém vem montado..."],
+
+        "dialogo_4" : ["Você se levanta devagar, com a mão no cabo da espada. Fica parado, escutando. O som se aproxima."],
+
+        "dialogo_5" : ["Um cavalo surge entre as árvores. O animal está ofegante, suado. Um homem pula de cima dele, quase",
+                       "tropeçando. Ele está usando um manto da cidade Alta."],
+
+        "dialogo_6" : ["Desconhecido: Você! Aventureiro(a)! Graças aos céus... achei você!"],
+
+        "dialogo_7" : [f"{Name}: Quem é você? O que quer aqui?"],
+
+        "dialogo_8" : ["Desconhecido: Sou Darrin, Mensageiro do Lorde Harwin. O lorde soube que você estava",
+                        "chegando e me enviou para recruta-lo, estamos com problemas."],
+
+        "dialogo_9" : [f"{Name}: O que o lorde quer de mim ?"],
+
+        "dialogo_10" : [f"Darrin (Mensageiro do Lorde): Ultimamente estamos recebendo pedidos de ajuda de comerciantes por causa",
+                       "de bandidos, eles estão atacando as caravanas que estão de viagem até a Cidade Alta. Nossos batedores",
+                       "encontraram onde eles firmaram um acampamento."],
+
+        "dialogo_11" : [f"{Name}: E o Lorde Harwin quer que eu vá até esse acampamento e faça o trabalho sujo por ele ?"],
+
+        "dialogo_12" : ["Darrin (Mensageiro do Lorde): Basicamente sim aventureiro(a). Se você conseguir tal feito, o Lorde",
+                       "vai te dar uma recompensa a altura."],
+
+        "dialogo_13" : [f"{Name}: Eu aceito o contrato, onde posso achar esse Acampamento dos Bandidos ?"],
+
+        "dialogo_14" : ["Darrin (Mensageiro do Lorde): Nossos batedores encontraram ele ao extremo leste, seguindo pela Floresta",
+                         "Negra e ultrapassando o Rio Verde."],
         
+        "dialogo_15" : [f"{Name}: Vou resolver isso, avise ao lorde que irei até a Cidade Alta para buscar minha recompensa",
+                        "quando eu terminhar o trabalho."],
+
+        "dialogo_16" : ["Darrin (Mensageiro do Lorde): Muito obrigado aventureiro(a), irei avisa-lo. Boa sorte na sua jornada e que",
+                        "os ventos da Montanha do Dragão te ajudem."],
+
+        "dialogo_17" : ["O mensageiro sobe em seu cavalo e parte de volta pela floresta."]
+
+
+    }
+    
+    def dialogos_acampamento():
+        global Name, dialogo_acampamento_lista, dialogo_1
+
+        if dialogo_1:
+            for i in dialogo_acampamento_lista:
+                marcacao_dialogo()
+                exibidor_texto_rpg(dialogo_acampamento_lista[f"{i}"], 0.01)
+                marcacao_dialogo()
+                input("\n#>")
+                clear()
+        dialogo_1 = False
+
     while play:
         clear()
         if description:
-            escolha_exibidor_texto()
-            input("\n#>")
+            escolha_exibidor_descricao()
         clear()
         if not menu_game:
             if biom[Map[y][x]]["enemies"]:
@@ -805,6 +897,8 @@ while run:
             print("4 - SUL")
         if x > 0:
             print("5 - OESTE")
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+            print("6 - Entrar no Acampamento")
         linhas()
         dest = input("#>")
 
@@ -846,6 +940,18 @@ while run:
                 x -= 1
                 menu_game = False
                 description = True
+
+        elif biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra em seu acampamento")
+                linhas()
+                input("#>")
+                play = False
+                Acampamento = True
+                
+
             else:
                 fronteira()
 
@@ -871,8 +977,13 @@ while run:
         dest_status = input("#>")
 
         if dest_status == "0":
-            status = False
-            play = True
+            if inside_region:
+                status = False
+                biom[Map[y][x]] = True #Não funcionou, rever
+
+            else:
+                status = False
+                play = True
         
         if  atributos_contagem > 0:
             if dest_status == "1":
@@ -968,12 +1079,64 @@ while run:
         dest_inv = input("#>")
 
         if dest_inv == "0":
-            inv = False
-            play = True
+            if inside_region:
+                status = False
+                biom[Map[y][x]] = True
+            else:
+                inv = False
+                play = True
+
         if "curativo" in inventario:
             if dest_inv =="1":
                 cura_menu(20)  
                 remover_item(inventario, "curativo", 1)
                 input("#>")
+
+    while Acampamento:
+        clear()
+        dialogos_acampamento()
+        clear()
+        linhas()
+        print("Localização:", biom[Map[y][x]]["text"])
+        linhas()
+        print(f"Nome: {Name}")
+        print(f"Nivel de personagem: {Level}")
+        print("Vida:" + str(Health) + "/" + str(HpMAX))
+        print(f"Dinheiro: {Gold}")
+        linhas()
+        print("Equipamento:")
+        for itens in equipamento:
+            print(f"- {itens}")
+        linhas()
+        print("Comandos:")
+        print("\n0 - Ver Atributos")
+        print("1 - Ver inventário")
+        print("2 - Descansar no acampamento")
+        print("3 - Sair do acampamento")
+        linhas()
+        dest = input("#>")
+
+        if dest =="0":
+            menu_game = True
+            Acampamento = False
+            status = True
+
+        if dest =="1":
+            menu_game = True
+            Acampamento = False
+            inv = True
+
+        if dest =="2":
+            descansar_acampamento(25)
+        
+        if dest =="3":
+            clear()
+            marcacao_dialogo()
+            print("O aventureiro(a) sai de seu acampamento e parte para a estrada")
+            marcacao_dialogo()
+            input("#>")
+            Acampamento = False
+            play = True
+
 
 
