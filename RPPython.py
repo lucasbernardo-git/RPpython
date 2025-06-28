@@ -911,7 +911,7 @@ while run:
             status = False
             Planicie = True
         
-        if biom[Map[y][x]]["text"] == "PLANÍCIE VERDEJANTES":
+        if biom[Map[y][x]]["text"] == "PLANÍCIES VERDEJANTES":
             status = False
             Planicie_Verdejantes = True
         
@@ -999,7 +999,7 @@ while run:
             inv = False
             Planicie = True
         
-        if biom[Map[y][x]]["text"] == "PLANÍCIE VERDEJANTES":
+        if biom[Map[y][x]]["text"] == "PLANÍCIES VERDEJANTES":
             inv = False
             Planicie_Verdejantes = True
         
@@ -1059,6 +1059,89 @@ while run:
             inv = False
             Posto_Comercial = True
 
+    def entrar_regioes():
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+                print("6 - Entrar no Acampamento")
+
+        if biom[Map[y][x]]["text"] == "FLORESTA":
+                print("6 - Entrar na Floresta")
+
+            
+        if biom[Map[y][x]]["text"] == "FLORESTA NEGRA":
+                print("6 - Entrar na Floresta Negra")
+
+            
+        if biom[Map[y][x]]["text"] == "RIO VERDE":
+                print("6 - Entrar no Rio Verde")
+
+            
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO DOS BANDIDOS":
+                print("6 - Entrar no Acampamento dos Bandidos")
+
+            
+        if biom[Map[y][x]]["text"] == "PLANÍCIE":
+                print("6 - Entrar na Planície")
+
+            
+        if biom[Map[y][x]]["text"] == "PLANÍCIES VERDEJANTES":
+                print("6 - Entrar nas Planíes Verdejantes")
+
+            
+        if biom[Map[y][x]]["text"] == "CIDADE ALTA":
+                print("6 - Entrar na Cidade Alta")
+
+            
+        if biom[Map[y][x]]["text"] == "POSTO DE MINERAÇÃO":
+                print("6 - Entrar no POsto de Mineração")
+
+            
+        if biom[Map[y][x]]["text"] == "FLORESTA FUNGE":
+                print("6 - Entrar na Floresta Funge")
+
+            
+        if biom[Map[y][x]]["text"] == "RIO FUNGE":
+                print("6 - Entrar no Rio Funge")
+
+            
+        if biom[Map[y][x]]["text"] == "LAGO":
+                print("6 - Entrar no Lago")
+
+            
+        if biom[Map[y][x]]["text"] == "CIDADE BAIXA":
+                print("6 - Entrar na Cidade Baixa")
+
+            
+        if biom[Map[y][x]]["text"] == "MONTANHAS":
+                print("6 - Entrar nas Montanhas")
+
+            
+        if biom[Map[y][x]]["text"] == "VILAREJO DAS MONTANHAS":
+                print("6 - Entrar no Vilarejo das Montanhas")
+
+            
+        if biom[Map[y][x]]["text"] == "DEPRESSÃO":
+                print("6 - Entrar na Depressão")
+
+            
+        if biom[Map[y][x]]["text"] == "CAVERNA":
+                print("6 - Entrar na Caverna")
+
+            
+        if biom[Map[y][x]]["text"] == "MONTANHA DO DRAGÃO":
+                print("6 - Entrar na Montanha do Dragão")
+
+            
+        if biom[Map[y][x]]["text"] == "VALE DA PERDIÇÃO":
+                print("6 - Entrar no Vale da Perdição")
+
+            
+        if biom[Map[y][x]]["text"] == "PONTE":
+                print("6 - Entrar na Ponte")
+
+            
+        if biom[Map[y][x]]["text"] == "POSTO COMERCIAL":
+                print("6 - Entrar no Posto Comercial")
+
     while play:
         clear()
         if description:
@@ -1093,8 +1176,7 @@ while run:
             print("4 - SUL")
         if x > 0:
             print("5 - OESTE")
-        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
-            print("6 - Entrar no Acampamento")
+        entrar_regioes()
         linhas()
         dest = input("#>")
 
