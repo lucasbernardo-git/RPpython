@@ -685,7 +685,7 @@ Floresta_Negra = False
 Rio_Verde = False
 Acampamento_Dos_Bandidos = False
 Planicie = False
-Planicie_Verdejantes = False
+Planicies_Verdejantes = False
 Cidade_Alta = False
 Posto_De_Mineracao = False
 Floresta_Funge = False
@@ -884,7 +884,7 @@ while run:
         dialogo_1 = False
 
     def stats_region():
-        global status, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicie_Verdejantes, Cidade_Alta, Posto_De_Mineracao
+        global status, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicies_Verdejantes, Cidade_Alta, Posto_De_Mineracao
         global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
 
         if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
@@ -913,7 +913,7 @@ while run:
         
         if biom[Map[y][x]]["text"] == "PLANÍCIES VERDEJANTES":
             status = False
-            Planicie_Verdejantes = True
+            Planicies_Verdejantes = True
         
         if biom[Map[y][x]]["text"] == "CIDADE ALTA":
             status = False
@@ -972,7 +972,7 @@ while run:
             Posto_Comercial = True
 
     def inv_region():
-        global inv, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicie_Verdejantes, Cidade_Alta, Posto_De_Mineracao
+        global inv, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicies_Verdejantes, Cidade_Alta, Posto_De_Mineracao
         global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
 
         if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
@@ -1001,7 +1001,7 @@ while run:
         
         if biom[Map[y][x]]["text"] == "PLANÍCIES VERDEJANTES":
             inv = False
-            Planicie_Verdejantes = True
+            Planicies_Verdejantes = True
         
         if biom[Map[y][x]]["text"] == "CIDADE ALTA":
             inv = False
@@ -1059,7 +1059,7 @@ while run:
             inv = False
             Posto_Comercial = True
 
-    def entrar_regioes():
+    def entrar_regioes_mensagem():
         if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
                 print("6 - Entrar no Acampamento")
 
@@ -1142,6 +1142,241 @@ while run:
         if biom[Map[y][x]]["text"] == "POSTO COMERCIAL":
                 print("6 - Entrar no Posto Comercial")
 
+    def entrar_regioes():
+        global play, inside_region, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicies_Verdejantes, Cidade_Alta, Posto_De_Mineracao
+        global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
+
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra em seu acampamento")
+                linhas()
+                input("#>")
+                play = False
+                Acampamento = True
+                inside_region = True
+            
+        if biom[Map[y][x]]["text"] == "FLORESTA":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Floresta")
+                linhas()
+                input("#>")
+                play = False
+                Floresta = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA NEGRA":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Floresta Negra")
+                linhas()
+                input("#>")
+                play = False
+                Floresta_Negra = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "RIO VERDE":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Rio Verde")
+                linhas()
+                input("#>")
+                play = False
+                Rio_Verde = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO DOS BANDIDOS":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Acampamento Dos Bandidos")
+                linhas()
+                input("#>")
+                play = False
+                Acampamento_Dos_Bandidos = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "PLANÍCIE":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na PLanície")
+                linhas()
+                input("#>")
+                play = False
+                Planicie = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "PLANÍCIES VERDEJANTES":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra nas Planícies Verdejantes")
+                linhas()
+                input("#>")
+                play = False
+                Planicies_Verdejantes = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "CIDADE ALTA":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Cidade Alta")
+                linhas()
+                input("#>")
+                play = False
+                Cidade_Alta = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "POSTO DE MINERAÇÃO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Posto de Mineração")
+                linhas()
+                input("#>")
+                play = False
+                Posto_De_Mineracao = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA FUNGE":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Floresta Funge")
+                linhas()
+                input("#>")
+                play = False
+                Floresta_Funge = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "RIO FUNGE":
+           if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Rio Funge")
+                linhas()
+                input("#>")
+                play = False
+                Rio_Funge = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "LAGO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Lago")
+                linhas()
+                input("#>")
+                play = False
+                Lago = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "CIDADE BAIXA":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Cidade Baixa")
+                linhas()
+                input("#>")
+                play = False
+                Cidade_Baixa = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "MONTANHAS":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra nas Montanhas")
+                linhas()
+                input("#>")
+                play = False
+                Montanhas = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "VILAREJO DAS MONTANHAS":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Vilarejo das Montanhas")
+                linhas()
+                input("#>")
+                play = False
+                Vilarejo_Das_Montanhas = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "DEPRESSÃO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Depressão")
+                linhas()
+                input("#>")
+                play = False
+                Depressao = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "CAVERNA":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Caverna")
+                linhas()
+                input("#>")
+                play = False
+                Caverna = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "MONTANHA DO DRAGÃO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Montanha do Dragão")
+                linhas()
+                input("#>")
+                play = False
+                Montanha_Do_Dragao = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "VALE DA PERDIÇÃO":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Vale da Perdição")
+                linhas()
+                input("#>")
+                play = False
+                Vale_Da_Perdicao = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "PONTE":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra na Ponte")
+                linhas()
+                input("#>")
+                play = False
+                Ponte = True
+                inside_region = True
+        
+        if biom[Map[y][x]]["text"] == "POSTO COMERCIAL":
+            if dest == "6":
+                clear()
+                linhas()
+                print("O aventureiro(a) entra no Posto Comercial")
+                linhas()
+                input("#>")
+                play = False
+                Posto_Comercial = True
+                inside_region = True
+
     while play:
         clear()
         if description:
@@ -1176,7 +1411,7 @@ while run:
             print("4 - SUL")
         if x > 0:
             print("5 - OESTE")
-        entrar_regioes()
+        entrar_regioes_mensagem()
         linhas()
         dest = input("#>")
 
@@ -1221,16 +1456,7 @@ while run:
             else:
                 fronteira()
 
-        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
-            if dest == "6":
-                clear()
-                linhas()
-                print("O aventureiro(a) entra em seu acampamento")
-                linhas()
-                input("#>")
-                play = False
-                Acampamento = True
-                inside_region = True
+        entrar_regioes()
                 
 
             
