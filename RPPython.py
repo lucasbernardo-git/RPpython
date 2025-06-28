@@ -680,6 +680,26 @@ inside_region = False
 
 #Menu dentro das regiões
 Acampamento = False
+Floresta = False
+Floresta_Negra = False
+Rio_Verde = False
+Acampamento_Dos_Bandidos = False
+Planicie = False
+Planicie_Verdejantes = False
+Cidade_Alta = False
+Posto_De_Mineracao = False
+Floresta_Funge = False
+Rio_Funge = False
+Lago = False
+Cidade_Baixa = False
+Montanhas = False
+Vilarejo_Das_Montanhas = False
+Depressao = False
+Caverna = False
+Montanha_Do_Dragao = False
+Vale_Da_Perdicao = False
+Ponte = False
+Posto_Comercial = False
 
 while run:
     while menu:
@@ -863,6 +883,182 @@ while run:
                 clear()
         dialogo_1 = False
 
+    def stats_region():
+        global status, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicie_Verdejantes, Cidade_Alta, Posto_De_Mineracao
+        global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
+
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+            status = False
+            Acampamento = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA":
+            status = False
+            Floresta = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA NEGRA":
+            status = False
+            Floresta_Negra = True
+        
+        if biom[Map[y][x]]["text"] == "RIO VERDE":
+            status = False
+            Rio_Verde = True
+        
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO DOS BANDIDOS":
+            status = False
+            Acampamento_Dos_Bandidos = True
+        
+        if biom[Map[y][x]]["text"] == "PLANÍCIE":
+            status = False
+            Planicie = True
+        
+        if biom[Map[y][x]]["text"] == "PLANÍCIE VERDEJANTES":
+            status = False
+            Planicie_Verdejantes = True
+        
+        if biom[Map[y][x]]["text"] == "CIDADE ALTA":
+            status = False
+            Cidade_Alta = True
+        
+        if biom[Map[y][x]]["text"] == "POSTO DE MINERAÇÃO":
+            status = False
+            Posto_De_Mineracao = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA FUNGE":
+            status = False
+            Floresta_Funge = True
+        
+        if biom[Map[y][x]]["text"] == "RIO FUNGE":
+            status = False
+            Rio_Funge = True
+        
+        if biom[Map[y][x]]["text"] == "LAGO":
+            status = False
+            Lago = True
+        
+        if biom[Map[y][x]]["text"] == "CIDADE BAIXA":
+            status = False
+            Cidade_Baixa = True
+        
+        if biom[Map[y][x]]["text"] == "MONTANHAS":
+            status = False
+            Montanhas = True
+        
+        if biom[Map[y][x]]["text"] == "VILAREJO DAS MONTANHAS":
+            status = False
+            Vilarejo_Das_Montanhas = True
+        
+        if biom[Map[y][x]]["text"] == "DEPRESSÃO":
+            status = False
+            Depressao = True
+        
+        if biom[Map[y][x]]["text"] == "CAVERNA":
+            status = False
+            Caverna = True
+        
+        if biom[Map[y][x]]["text"] == "MONTANHA DO DRAGÃO":
+            status = False
+            Montanha_Do_Dragao = True
+        
+        if biom[Map[y][x]]["text"] == "VALE DA PERDIÇÃO":
+            status = False
+            Vale_Da_Perdicao = True
+        
+        if biom[Map[y][x]]["text"] == "PONTE":
+            status = False
+            Ponte = True
+        
+        if biom[Map[y][x]]["text"] == "POSTO COMERCIAL":
+            status = False
+            Posto_Comercial = True
+
+    def inv_region():
+        global inv, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicie_Verdejantes, Cidade_Alta, Posto_De_Mineracao
+        global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
+
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+            inv = False
+            Acampamento = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA":
+            inv = False
+            Floresta = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA NEGRA":
+            inv = False
+            Floresta_Negra = True
+        
+        if biom[Map[y][x]]["text"] == "RIO VERDE":
+            inv = False
+            Rio_Verde = True
+        
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO DOS BANDIDOS":
+            inv = False
+            Acampamento_Dos_Bandidos = True
+        
+        if biom[Map[y][x]]["text"] == "PLANÍCIE":
+            inv = False
+            Planicie = True
+        
+        if biom[Map[y][x]]["text"] == "PLANÍCIE VERDEJANTES":
+            inv = False
+            Planicie_Verdejantes = True
+        
+        if biom[Map[y][x]]["text"] == "CIDADE ALTA":
+            inv = False
+            Cidade_Alta = True
+        
+        if biom[Map[y][x]]["text"] == "POSTO DE MINERAÇÃO":
+            inv = False
+            Posto_De_Mineracao = True
+        
+        if biom[Map[y][x]]["text"] == "FLORESTA FUNGE":
+            inv = False
+            Floresta_Funge = True
+        
+        if biom[Map[y][x]]["text"] == "RIO FUNGE":
+            inv = False
+            Rio_Funge = True
+        
+        if biom[Map[y][x]]["text"] == "LAGO":
+            inv = False
+            Lago = True
+        
+        if biom[Map[y][x]]["text"] == "CIDADE BAIXA":
+            inv = False
+            Cidade_Baixa = True
+        
+        if biom[Map[y][x]]["text"] == "MONTANHAS":
+            inv = False
+            Montanhas = True
+        
+        if biom[Map[y][x]]["text"] == "VILAREJO DAS MONTANHAS":
+            inv = False
+            Vilarejo_Das_Montanhas = True
+        
+        if biom[Map[y][x]]["text"] == "DEPRESSÃO":
+            inv = False
+            Depressao = True
+        
+        if biom[Map[y][x]]["text"] == "CAVERNA":
+            inv = False
+            Caverna = True
+        
+        if biom[Map[y][x]]["text"] == "MONTANHA DO DRAGÃO":
+            inv = False
+            Montanha_Do_Dragao = True
+        
+        if biom[Map[y][x]]["text"] == "VALE DA PERDIÇÃO":
+            inv = False
+            Vale_Da_Perdicao = True
+        
+        if biom[Map[y][x]]["text"] == "PONTE":
+            inv = False
+            Ponte = True
+        
+        if biom[Map[y][x]]["text"] == "POSTO COMERCIAL":
+            inv = False
+            Posto_Comercial = True
+
     while play:
         clear()
         if description:
@@ -940,8 +1136,10 @@ while run:
                 x -= 1
                 menu_game = False
                 description = True
+            else:
+                fronteira()
 
-        elif biom[Map[y][x]]["text"] == "ACAMPAMENTO":
+        if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
             if dest == "6":
                 clear()
                 linhas()
@@ -950,10 +1148,10 @@ while run:
                 input("#>")
                 play = False
                 Acampamento = True
+                inside_region = True
                 
 
-            else:
-                fronteira()
+            
 
     while status:
         clear()
@@ -978,8 +1176,7 @@ while run:
 
         if dest_status == "0":
             if inside_region:
-                status = False
-                biom[Map[y][x]] = True #Não funcionou, rever
+                stats_region()
 
             else:
                 status = False
@@ -1080,8 +1277,7 @@ while run:
 
         if dest_inv == "0":
             if inside_region:
-                status = False
-                biom[Map[y][x]] = True
+                inv_region()
             else:
                 inv = False
                 play = True
@@ -1137,6 +1333,7 @@ while run:
             input("#>")
             Acampamento = False
             play = True
+            inside_region = False
 
 
 
