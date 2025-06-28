@@ -666,212 +666,7 @@ def descansar_acampamento(cura):
     marcacao_dialogo()
     input("#>")
 
-#Menus interativos
-run = True
-menu = True
-play = False
-status = False
-fight = False
-menu_game = True  #Define se não vai aparecer batalhas quando voltar de algum menu
-status_points = False
-inv = False
-description = True
-inside_region = False
-
-#Menu dentro das regiões
-Acampamento = False
-Floresta = False
-Floresta_Negra = False
-Rio_Verde = False
-Acampamento_Dos_Bandidos = False
-Planicie = False
-Planicies_Verdejantes = False
-Cidade_Alta = False
-Posto_De_Mineracao = False
-Floresta_Funge = False
-Rio_Funge = False
-Lago = False
-Cidade_Baixa = False
-Montanhas = False
-Vilarejo_Das_Montanhas = False
-Depressao = False
-Caverna = False
-Montanha_Do_Dragao = False
-Vale_Da_Perdicao = False
-Ponte = False
-Posto_Comercial = False
-
-while run:
-    while menu:
-        clear()
-        linhas()
-        print(" - Bem vindo ao RPPython -")
-        linhas()
-        print("# Menu:")
-        print("\n- Para começar o jogo digite 1")
-        print("- Para sair do jogo digite 2")
-        linhas()
-        try:
-            escolha_menu = int(input("#: "))
-        except ValueError:
-            print("Digite apenas numeros, tente novamente")
-            time.sleep(1.5)
-            continue
-        if escolha_menu in [1,2]:
-            if escolha_menu == 1:
-                clear()
-                Name = input("# Qual é o seu nome, heroi? > ")
-                linhas()
-                clear()
-
-            
-                linhas()
-                print(" - Defina seus atributos -")
-                linhas()
-                print("\nVocê tem 5 pontos para distribuir em:")
-                print('\n# Vida - possui "5" pontos')
-                print('# Defesa - possui "2" pontos ')
-                print('# Energia - possui "3" pontos')
-                print('# Destreza - possui "3" pontos')
-                print('# Força - possui "4" pontos')
-                print('# Inteligência - possui "4" pontos')
-                print('\nCaso não deseja aumentar nenhum atributo, digite 0')
-                linhas()
-
-                while condicao_while:
-                    try:
-                        vida = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Vida:")))
-                        if vida == 0:
-                            parar_loop()
-                        if vida == "none":
-                            continue
-                        Health = ((Health + vida) * 5) + 15
-                        HpMAX = Health
-                    except ValueError:
-                        print("Digite apenas numeros, tente novamente.")
-                        continue
-                condicao_while = True
-                while condicao_while:
-                    try:
-                        defesa = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Defesa:")))
-                        if defesa == 0:
-                            parar_loop()
-                        if defesa == "none":
-                            continue
-                        Defense = Defense + defesa
-                    except ValueError:
-                        print("Digite apenas numeros, tente novamente.")
-                        continue
-                condicao_while = True
-                while condicao_while:
-                    try:
-                        energia = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Energia:")))
-                        if energia == 0:
-                            parar_loop()
-                        if energia == "none":
-                            continue
-                        Energy = Energy + energia
-                    except ValueError:
-                        print("Digite apenas numeros, tente novamente.")
-                        continue
-                condicao_while = True
-                while condicao_while:
-                    try:
-                        destreza = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Destreza:")))
-                        if destreza == 0:
-                            parar_loop()
-                        if destreza == "none":
-                            continue
-                        Dexterity = Dexterity + destreza
-                    except ValueError:
-                        print("Digite apenas numeros, tente novamente.")
-                        continue
-                condicao_while = True
-                while condicao_while:
-                    try:
-                        forca = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Força:")))
-                        if forca == 0:
-                            parar_loop()
-                        if forca == "none":
-                            continue
-                        Strength = Strength + forca
-                    except ValueError:
-                        print("Digite apenas numeros, tente novamente.")
-                        continue
-                condicao_while = True
-                while condicao_while:
-                    try:
-                        inteligencia = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Inteligência:")))
-                        if inteligencia == 0:
-                            parar_loop()
-                        if inteligencia == "none":
-                            continue
-                        Intelligence = Intelligence + inteligencia
-                    except ValueError:
-                        print("Digite apenas numeros, tente novamente.")
-                        continue
-                menu = False
-                Acampamento = True
-                inside_region = True
-            elif escolha_menu == 2:
-                print("Saindo...")
-                time.sleep(1)
-                quit()
-            else:
-                print("Escolha apenas 1 ou 2, tente novamente")
-                time.sleep(1.5)
-                continue 
-
-
-        #Dialogos do jogo, está aqui pois o mome só é salvo aqui em cima
-        dialogo_acampamento_lista = {
-        "dialogo_1" : ["Você está em seu acampamento, sentado perto da fogueira. A carne já está quase pronta, e o cheiro bom",
-                       "preenche o ar. O dia de viagem foi longo, e finalmente tem um pouco de paz."],
-
-        "dialogo_2" : ["De repente, um barulho estranho corta o som da noite. Passos rápidos... cascos?"],
-
-        "dialogo_3" : [f"{Name}: Isso não é lobo. Alguém vem montado..."],
-
-        "dialogo_4" : ["Você se levanta devagar, com a mão no cabo da espada. Fica parado, escutando. O som se aproxima."],
-
-        "dialogo_5" : ["Um cavalo surge entre as árvores. O animal está ofegante, suado. Um homem pula de cima dele, quase",
-                       "tropeçando. Ele está usando um manto da cidade Alta."],
-
-        "dialogo_6" : ["Desconhecido: Você! Aventureiro(a)! Graças aos céus... achei você!"],
-
-        "dialogo_7" : [f"{Name}: Quem é você? O que quer aqui?"],
-
-        "dialogo_8" : ["Desconhecido: Sou Darrin, Mensageiro do Lorde Harwin. O lorde soube que você estava",
-                        "chegando e me enviou para recruta-lo, estamos com problemas."],
-
-        "dialogo_9" : [f"{Name}: O que o lorde quer de mim ?"],
-
-        "dialogo_10" : [f"Darrin (Mensageiro do Lorde): Ultimamente estamos recebendo pedidos de ajuda de comerciantes por causa",
-                       "de bandidos, eles estão atacando as caravanas que estão de viagem até a Cidade Alta. Nossos batedores",
-                       "encontraram onde eles firmaram um acampamento."],
-
-        "dialogo_11" : [f"{Name}: E o Lorde Harwin quer que eu vá até esse acampamento e faça o trabalho sujo por ele ?"],
-
-        "dialogo_12" : ["Darrin (Mensageiro do Lorde): Basicamente sim aventureiro(a). Se você conseguir tal feito, o Lorde",
-                       "vai te dar uma recompensa a altura."],
-
-        "dialogo_13" : [f"{Name}: Eu aceito o contrato, onde posso achar esse Acampamento dos Bandidos ?"],
-
-        "dialogo_14" : ["Darrin (Mensageiro do Lorde): Nossos batedores encontraram ele ao extremo leste, seguindo pela Floresta",
-                         "Negra e ultrapassando o Rio Verde."],
-        
-        "dialogo_15" : [f"{Name}: Vou resolver isso, avise ao lorde que irei até a Cidade Alta para buscar minha recompensa",
-                        "quando eu terminhar o trabalho."],
-
-        "dialogo_16" : ["Darrin (Mensageiro do Lorde): Muito obrigado aventureiro(a), irei avisa-lo. Boa sorte na sua jornada e que",
-                        "os ventos da Montanha do Dragão te ajudem."],
-
-        "dialogo_17" : ["O mensageiro sobe em seu cavalo e parte de volta pela floresta."]
-
-
-    }
-    
-    def dialogos_acampamento():
+def dialogos_acampamento():
         global Name, dialogo_acampamento_lista, dialogo_1
 
         if dialogo_1:
@@ -883,7 +678,7 @@ while run:
                 clear()
         dialogo_1 = False
 
-    def stats_region():
+def stats_region():
         global status, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicies_Verdejantes, Cidade_Alta, Posto_De_Mineracao
         global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
 
@@ -971,7 +766,7 @@ while run:
             status = False
             Posto_Comercial = True
 
-    def inv_region():
+def inv_region():
         global inv, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicies_Verdejantes, Cidade_Alta, Posto_De_Mineracao
         global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
 
@@ -1059,7 +854,7 @@ while run:
             inv = False
             Posto_Comercial = True
 
-    def entrar_regioes_mensagem():
+def entrar_regioes_mensagem():
         if biom[Map[y][x]]["text"] == "ACAMPAMENTO":
                 print("6 - Entrar no Acampamento")
 
@@ -1142,7 +937,7 @@ while run:
         if biom[Map[y][x]]["text"] == "POSTO COMERCIAL":
                 print("6 - Entrar no Posto Comercial")
 
-    def entrar_regioes():
+def entrar_regioes():
         global play, inside_region, Acampamento, Floresta, Floresta_Negra, Rio_Verde, Acampamento_Dos_Bandidos, Planicie, Planicies_Verdejantes, Cidade_Alta, Posto_De_Mineracao
         global Floresta_Funge, Rio_Funge, Lago, Cidade_Baixa, Montanhas, Vilarejo_Das_Montanhas, Depressao, Caverna, Montanha_Do_Dragao, Vale_Da_Perdicao, Ponte, Posto_Comercial
 
@@ -1376,6 +1171,213 @@ while run:
                 play = False
                 Posto_Comercial = True
                 inside_region = True
+
+#Menus interativos
+run = True
+menu = True
+play = False
+status = False
+fight = False
+menu_game = True  #Define se não vai aparecer batalhas quando voltar de algum menu
+status_points = False
+inv = False
+description = True
+inside_region = False
+
+#Menu dentro das regiões
+Acampamento = False
+Floresta = False
+Floresta_Negra = False
+Rio_Verde = False
+Acampamento_Dos_Bandidos = False
+Planicie = False
+Planicies_Verdejantes = False
+Cidade_Alta = False
+Posto_De_Mineracao = False
+Floresta_Funge = False
+Rio_Funge = False
+Lago = False
+Cidade_Baixa = False
+Montanhas = False
+Vilarejo_Das_Montanhas = False
+Depressao = False
+Caverna = False
+Montanha_Do_Dragao = False
+Vale_Da_Perdicao = False
+Ponte = False
+Posto_Comercial = False
+
+while run:
+    while menu:
+        clear()
+        linhas()
+        print(" - Bem vindo ao RPPython -")
+        linhas()
+        print("# Menu:")
+        print("\n- Para começar o jogo digite 1")
+        print("- Para sair do jogo digite 2")
+        linhas()
+        try:
+            escolha_menu = int(input("#: "))
+        except ValueError:
+            print("Digite apenas numeros, tente novamente")
+            time.sleep(1.5)
+            continue
+        if escolha_menu in [1,2]:
+            if escolha_menu == 1:
+                clear()
+                Name = input("# Qual é o seu nome, heroi? > ")
+                linhas()
+                clear()
+
+            
+                linhas()
+                print(" - Defina seus atributos -")
+                linhas()
+                print("\nVocê tem 5 pontos para distribuir em:")
+                print('\n# Vida - possui "5" pontos')
+                print('# Defesa - possui "2" pontos ')
+                print('# Energia - possui "3" pontos')
+                print('# Destreza - possui "3" pontos')
+                print('# Força - possui "4" pontos')
+                print('# Inteligência - possui "4" pontos')
+                print('\nCaso não deseja aumentar nenhum atributo, digite 0')
+                linhas()
+
+                while condicao_while:
+                    try:
+                        vida = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Vida:")))
+                        if vida == 0:
+                            parar_loop()
+                        if vida == "none":
+                            continue
+                        Health = ((Health + vida) * 5) + 15
+                        HpMAX = Health
+                    except ValueError:
+                        print("Digite apenas numeros, tente novamente.")
+                        continue
+                condicao_while = True
+                while condicao_while:
+                    try:
+                        defesa = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Defesa:")))
+                        if defesa == 0:
+                            parar_loop()
+                        if defesa == "none":
+                            continue
+                        Defense = Defense + defesa
+                    except ValueError:
+                        print("Digite apenas numeros, tente novamente.")
+                        continue
+                condicao_while = True
+                while condicao_while:
+                    try:
+                        energia = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Energia:")))
+                        if energia == 0:
+                            parar_loop()
+                        if energia == "none":
+                            continue
+                        Energy = Energy + energia
+                    except ValueError:
+                        print("Digite apenas numeros, tente novamente.")
+                        continue
+                condicao_while = True
+                while condicao_while:
+                    try:
+                        destreza = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Destreza:")))
+                        if destreza == 0:
+                            parar_loop()
+                        if destreza == "none":
+                            continue
+                        Dexterity = Dexterity + destreza
+                    except ValueError:
+                        print("Digite apenas numeros, tente novamente.")
+                        continue
+                condicao_while = True
+                while condicao_while:
+                    try:
+                        forca = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Força:")))
+                        if forca == 0:
+                            parar_loop()
+                        if forca == "none":
+                            continue
+                        Strength = Strength + forca
+                    except ValueError:
+                        print("Digite apenas numeros, tente novamente.")
+                        continue
+                condicao_while = True
+                while condicao_while:
+                    try:
+                        inteligencia = contagem_pontos(int(input("- Digite a quantidade de pontos extras para Inteligência:")))
+                        if inteligencia == 0:
+                            parar_loop()
+                        if inteligencia == "none":
+                            continue
+                        Intelligence = Intelligence + inteligencia
+                    except ValueError:
+                        print("Digite apenas numeros, tente novamente.")
+                        continue
+                menu = False
+                Acampamento = True
+                inside_region = True
+            elif escolha_menu == 2:
+                print("Saindo...")
+                time.sleep(1)
+                quit()
+            else:
+                print("Escolha apenas 1 ou 2, tente novamente")
+                time.sleep(1.5)
+                continue 
+
+
+        #Dialogos do jogo, está aqui pois o mome só é salvo aqui em cima
+        dialogo_acampamento_lista = {
+        "dialogo_1" : ["Você está em seu acampamento, sentado perto da fogueira. A carne já está quase pronta, e o cheiro bom",
+                       "preenche o ar. O dia de viagem foi longo, e finalmente tem um pouco de paz."],
+
+        "dialogo_2" : ["De repente, um barulho estranho corta o som da noite. Passos rápidos... cascos?"],
+
+        "dialogo_3" : [f"{Name}: Isso não é lobo. Alguém vem montado..."],
+
+        "dialogo_4" : ["Você se levanta devagar, com a mão no cabo da espada. Fica parado, escutando. O som se aproxima."],
+
+        "dialogo_5" : ["Um cavalo surge entre as árvores. O animal está ofegante, suado. Um homem pula de cima dele, quase",
+                       "tropeçando. Ele está usando um manto da cidade Alta."],
+
+        "dialogo_6" : ["Desconhecido: Você! Aventureiro(a)! Graças aos céus... achei você!"],
+
+        "dialogo_7" : [f"{Name}: Quem é você? O que quer aqui?"],
+
+        "dialogo_8" : ["Desconhecido: Sou Darrin, Mensageiro do Lorde Harwin. O lorde soube que você estava",
+                        "chegando e me enviou para recruta-lo, estamos com problemas."],
+
+        "dialogo_9" : [f"{Name}: O que o lorde quer de mim ?"],
+
+        "dialogo_10" : [f"Darrin (Mensageiro do Lorde): Ultimamente estamos recebendo pedidos de ajuda de comerciantes por causa",
+                       "de bandidos, eles estão atacando as caravanas que estão de viagem até a Cidade Alta. Nossos batedores",
+                       "encontraram onde eles firmaram um acampamento."],
+
+        "dialogo_11" : [f"{Name}: E o Lorde Harwin quer que eu vá até esse acampamento e faça o trabalho sujo por ele ?"],
+
+        "dialogo_12" : ["Darrin (Mensageiro do Lorde): Basicamente sim aventureiro(a). Se você conseguir tal feito, o Lorde",
+                       "vai te dar uma recompensa a altura."],
+
+        "dialogo_13" : [f"{Name}: Eu aceito o contrato, onde posso achar esse Acampamento dos Bandidos ?"],
+
+        "dialogo_14" : ["Darrin (Mensageiro do Lorde): Nossos batedores encontraram ele ao extremo leste, seguindo pela Floresta",
+                         "Negra e ultrapassando o Rio Verde."],
+        
+        "dialogo_15" : [f"{Name}: Vou resolver isso, avise ao lorde que irei até a Cidade Alta para buscar minha recompensa",
+                        "quando eu terminhar o trabalho."],
+
+        "dialogo_16" : ["Darrin (Mensageiro do Lorde): Muito obrigado aventureiro(a), irei avisa-lo. Boa sorte na sua jornada e que",
+                        "os ventos da Montanha do Dragão te ajudem."],
+
+        "dialogo_17" : ["O mensageiro sobe em seu cavalo e parte de volta pela floresta."]
+
+
+    }
+    
+    
 
     while play:
         clear()
